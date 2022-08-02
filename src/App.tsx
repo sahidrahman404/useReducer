@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useReducer } from "react";
 
 function Counter({ initialCount = 0, step = 1 }) {
+  const countReducer = (state: number, newState: number) => newState;
   // 🐨 replace React.useState with React.useReducer.
   // 💰 React.useReducer(countReducer, initialCount)
-  const [count, setCount] = useState(initialCount);
+  const [count, setCount] = useReducer(countReducer, initialCount);
 
   // 💰 you can write the countReducer function so you don't have to make any
   // changes to the next two lines of code! Remember:
