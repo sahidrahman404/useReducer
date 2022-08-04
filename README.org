@@ -35,3 +35,23 @@ function App() {
 
 export default App;
 #+end_src
+** Lazy initialization
+#+begin_src tsx
+function init(initialStateFromProps) {
+  return {
+    pokemon: null,
+    loading: false,
+    error: null,
+  }
+};
+
+// ...
+
+const [state, dispatch] = useReducer(reducer, initialState, init);
+#+end_src
+So, if you pass a third function argument to useReducer, it passes the second
+argument to that function and uses the return value for the initial state.
+
+*** Use Case
++ This could be useful if our init function read into localStorage or something
+  else that we wouldn't want happening every re-render.
